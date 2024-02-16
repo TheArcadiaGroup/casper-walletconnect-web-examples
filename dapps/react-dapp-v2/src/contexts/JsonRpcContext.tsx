@@ -1574,12 +1574,11 @@ export function JsonRpcContextProvider({
           request: {
             method,
             params: {
-              deploy: DeployUtil.deployToJson(transferDeploy),
+              deploy: DeployUtil.deployToJson(transferDeploy).deploy,
               address,
             },
           },
         });
-
         const signedDeploy = DeployUtil.deployFromJson(result).unwrap();
         const hash = await casperClient.putDeploy(signedDeploy);
         return {
