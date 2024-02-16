@@ -19,7 +19,7 @@ export async function approveCasperRequest(
       return formatJsonRpcResult(id, signedMessage)
 
     case CASPER_SIGNING_METHODS.CASPER_SIGN_DEPLOY:
-      const deploy = DeployUtil.deployFromJson(request.params.deploy).unwrap()
+      const deploy = DeployUtil.deployFromJson(request.params).unwrap()
       const signedDeploy = await wallet.signDeploy(deploy)
 
       return formatJsonRpcResult(id, DeployUtil.deployToJson(signedDeploy))
